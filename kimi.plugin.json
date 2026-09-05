@@ -1,0 +1,24 @@
+{
+  "name": "wavespeed",
+  "version": "0.1.0",
+  "description": "Generate and edit AI media (image, video, audio, 3D) on the WaveSpeed platform: live catalog search, per-model schema, local-file upload, price quotes before running.",
+  "keywords": ["image-generation", "video-generation", "audio-generation", "3d", "media", "wavespeed", "mcp", "skills"],
+  "author": "WaveSpeedAI",
+  "homepage": "https://github.com/WaveSpeedAI/wavespeed-kimi-plugin",
+  "license": "MIT",
+  "interface": {
+    "displayName": "WaveSpeed",
+    "shortDescription": "AI image, video, audio and 3D generation from Kimi Code — every model on WaveSpeed is one call.",
+    "longDescription": "Adds the WaveSpeed platform to Kimi Code. The bundled MCP server exposes search_models, get_model_schema, get_price, upload_file, run_model, get_prediction and get_balance, and the bundled skill teaches the agent the find → inspect → run workflow on the open-source wavespeed CLI, including uploading local files and quoting prices before spending credits. One `wavespeed login` authenticates both.",
+    "developerName": "WaveSpeedAI",
+    "websiteURL": "https://wavespeed.ai"
+  },
+  "skills": ["./skills/wavespeed"],
+  "skillInstructions": "The WaveSpeed MCP tools (search_models, get_model_schema, get_price, upload_file, run_model, get_prediction, get_balance) are the same operations as the CLI recipes in this skill. Prefer the MCP tools for single generations; fall back to the wavespeed CLI when it is installed and the user wants batch or scripted runs. Never ask the user to paste an API key into the chat.",
+  "mcpServers": {
+    "wavespeed": {
+      "command": "npx",
+      "args": ["-y", "@wavespeed/mcp"]
+    }
+  }
+}

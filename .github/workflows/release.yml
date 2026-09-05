@@ -1,0 +1,38 @@
+name: release
+
+# Tag vX.Y.Z (matching kimi.plugin.json) → GitHub Release with a single-plugin
+# zip asset. Kimi Code installs from the repo URL or from the zip directly.
+on:
+  push:
+    tags: ['v[0-9]+*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify tag matches kimi.plugin.json
+        run: |
+          MANIFEST=$(node -p "require('./kimi.plugin.json').version")
+          TAG="${GITHUB_REF#refs/tags/v}"
+          if [ "$MANIFEST" != "$TAG" ]; then
+            echo "kimi.plugin.json version ($MANIFEST) != tag ($TAG)"; exit 1
+          fi
+
+      - name: Build plugin zip
+        run: |
+          mkdir -p dist/wavespeed
+          cp -r kimi.plugin.json skills LICENSE README.md dist/wavespeed/
+          (cd dist && zip -r wavespeed-kimi.zip wavespeed)
+          ls -lh dist/wavespeed-kimi.zip
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/wavespeed-kimi.zip
+          generate_release_notes: true
