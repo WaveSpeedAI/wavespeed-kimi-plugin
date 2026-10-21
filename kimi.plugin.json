@@ -18,7 +18,7 @@
   "mcpServers": {
     "wavespeed": {
       "command": "npx",
-      "args": ["-y", "@wavespeed/mcp"]
+      "args": ["-y", "@wavespeed/mcp@latest"]
     }
   }
 }
