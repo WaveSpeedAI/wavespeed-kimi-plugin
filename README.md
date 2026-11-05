@@ -4,7 +4,7 @@ A [Kimi Code CLI](https://github.com/MoonshotAI/kimi-code) plugin that lets the 
 
 It bundles two things:
 
-- **MCP server** — [`@wavespeed/mcp`](https://github.com/WaveSpeedAI/mcp-server), started with `npx`. Tools: `list_models`, `get_model_schema`, `get_price`, `upload_file`, `run_model`, `generate_image`, `edit_image`, `generate_video`, `edit_video`, `extend_video`, `get_prediction`, `get_balance`.
+- **MCP server** — [`@wavespeed/mcp`](https://github.com/WaveSpeedAI/mcp-server), started with `npx`. Tools: `list_models`, `get_model_schema`, `get_price`, `upload_file`, `run_model`, `generate_image`, `edit_image`, `generate_video`, `edit_video`, `extend_video`, `get_prediction`, `list_predictions`, `delete_predictions`, `get_balance`, `get_usage`, `list_billings`.
 - **Skill** — the same `wavespeed` skill that ships with the open-source [`@wavespeed/cli`](https://github.com/WaveSpeedAI/wavespeed-cli). It teaches the agent the find → inspect → run pattern: search the live catalog, read any model's input schema, execute it, upload local files with the `@path` marker, and quote prices before spending credits.
 
 ## Install
@@ -29,7 +29,7 @@ Then `/reload` (or start a new session). `/plugins` shows it under Installed.
 - *"Replace the background of ./product.png with a sunlit kitchen."*
 - *"How much would a 10-second 1080p video cost before you run it?"*
 
-Recommended starting models: Seedream 5 Pro for images and Seedance 2.5 for video (the defaults of `wavespeed generate|edit|extend` and of the MCP `generate_image` / `generate_video` tools), with GPT Image 2.5, Nano Banana 2.1, Kling 4.0, Wan 3.0 and MiniMax H3 (cheap, native audio, 768p) as alternatives. The agent browses everything else with `list_models`.
+Recommended starting models: Seedream 5 Pro for images and Seedance 2.5 for video (the defaults of `wavespeed generate|edit|extend` and of the MCP `generate_image` / `generate_video` tools), with GPT Image 2.6, GPT Image 2.5, Nano Banana 2.1, Kling 4.0, Wan 3.0 and MiniMax H3 (cheap, native audio, 768p) as alternatives. The agent browses everything else with `list_models`.
 
 ## Same skill, other agents
 
